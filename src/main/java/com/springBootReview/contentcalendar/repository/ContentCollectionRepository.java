@@ -28,6 +28,7 @@ public class ContentCollectionRepository {
     }
 
     public void save(Content content){
+        contentList.removeIf(c -> c.id().equals(content.id()));
         contentList.add(content);
     }
 
@@ -38,5 +39,13 @@ public class ContentCollectionRepository {
                 LocalDateTime.now(), null, "");
         contentList.add(content);
 
+    }
+
+    public boolean existsById(Integer id){
+        return contentList.stream().filter(c -> c.id().equals(id)).count() == 1;
+    }
+
+    public void delete(Integer id){
+        contentList.removeIf(c -> c.id().equals(id));
     }
 }
