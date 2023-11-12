@@ -13,9 +13,10 @@ public class HomeController {
 
     private final ContentCalendarProperties properties;
 
-    public HomeController(ContentCalendarProperties properties){
+    public HomeController(ContentCalendarProperties properties) {
         this.properties = properties;
     }
+
     @Value("${cc.welcomeMessage: Default Welcome Message}")
     private String welcomeMessage;
     @Value("${cc.about}")
